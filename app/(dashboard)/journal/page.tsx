@@ -1,5 +1,6 @@
 import EntryCard from '@/components/EntryCard';
 import NewEntryCard from '@/components/NewEntryCard';
+import { analyze } from '@/utils/ai';
 import { getUserByClerkId } from '@/utils/auth';
 import { prisma } from '@/utils/db';
 import { get } from 'http';
@@ -15,6 +16,8 @@ const getEntries = async () => {
       createdAt: 'desc',
     },
   });
+
+  await analyze('create me a few components that renders a counting number');
 
   return entries;
 };
